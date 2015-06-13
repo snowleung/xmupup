@@ -1,0 +1,10 @@
+<html>
+{% for file in files%}
+{{file}}</br>
+{% endfor %}
+
+<form enctype="multipart/form-data" method='POST'>
+<input type="file" name="file" />
+<input type="submit" value="submit" />
+</form>
+</html>
