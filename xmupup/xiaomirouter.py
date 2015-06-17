@@ -27,9 +27,13 @@ def get_files():
             'files': ['{}?name={}'.format(INTERNAL_URL, f) for f in sorted(files)]}
         return make_response(render_template(template, **datas))
     else:
-        f = open('./static/{}'.format(name))
-        return send_file(f, attachment_filename='{}'.format(name), as_attachment=True)
-
+        try:
+            f =  open('./static/{}'.format(name))
+            return send_file(f, attachment_filename='{}'.format(name), as_attachment=True)
+        except Exception as ex:
+            pass
+        finally:
+            f.close()
 
 if __name__ == '__main__':
     app.debug = True
